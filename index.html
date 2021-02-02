@@ -15,16 +15,67 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-      <section>
-          <a href="test_site.html">Check my key</a>
-        <h1>OfficeConsult Deal Maker</h1>
-        <input type="text" class="input airTablePrivateKey">
-        <button class="btn" onclick="setKey()">Set key</button>
-        <button class="btn" onclick="displayBase()">Show base</button>
-      </section>
+    <section>
+      <a href="#" onclick="showKey()">Check my key</a>
+      <h1>OfficeConsult Deal Maker</h1>
+      <input
+        type="text"
+        placeholder="Airtable API key"
+        class="input airTablePrivateKey"
+      />
+      <button class="btn" onclick="setKey()">Set key</button>
 
-    
+      <div class="dropdown">
+        <input
+          type="text"
+          placeholder="Ansvarlig utvikler"
+          class="dropdown-toggle dropdown-active-display responsible-developer-searchbar"
+          id="dropdownMenuButton_ansvarlig_utvikler"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          oninput="searchResponsibleDevelopers()"
+        />
 
+        <div
+          class="dropdown-menu utvikler-dropdown-select"
+          aria-labelledby="dropdownMenuButton_ansvarlig_utvikler"
+        >
+          <button class="btn dropdown-item" onclick="responsibleDeveloperSelect(this)">
+            Empty
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Kunde"
+        />
+      </div>
+
+      <div class="dropdown">
+        <input
+          type="text"
+          placeholder="Kontakt-person"
+          class="dropdown-toggle dropdown-active-display responsible-contact-searchbar"
+          id="dropdownMenuButton_ansvarlig_kunde"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          oninput="searchResponsibleContacts()"
+        />
+
+        <div
+          class="dropdown-menu contact-dropdown-select"
+          aria-labelledby="dropdownMenuButton_ansvarlig_kunde"
+        >
+          <button class="btn dropdown-item" onclick="responsibleContactSelect(this)">
+            Empty
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- Jquerry -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -46,5 +97,7 @@
     ></script>
     <!-- Custom -->
     <script src="index.js"></script>
+    <script src="developerHandler.js"></script>
+    <script src="contactHandler.js"></script>
   </body>
 </html>

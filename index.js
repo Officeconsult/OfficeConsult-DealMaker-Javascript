@@ -1,27 +1,26 @@
 var key;
 
-function setKey() {
-    key = $("input.airTablePrivateKey").val();
-    document.cookie = "key=" + key;
+
+async function loadBase() {
+  // load all developers
+  allDevelopers = await loadAllDevelopersFromAirTable();
+  // parse response and make button for each developer
+  sortResponsibleDevelopers("");
+
+  // load up and make a dropdown for all the clients
+  allContacts = await loadAllContactsFromAirTable();
+  // parse response and make button for each contact
+  sortResponsibleContacts("");
 }
 
-async function displayBase(){
-    const url = "https://api.airtable.com/v0/appPu05N346JHlDTg/Tilbud";
-
-    const options = {
-      headers: {
-        Authorization: "Bearer " + key
-      }
-    };
-    
-    var resp;
-    await fetch(url, options).then( res => resp = res.json());
-    console.log(resp);
+function setKey() {
+  key = $("input.airTablePrivateKey").val();
+  document.cookie = "key=" + key;
+  loadBase();
 }
 
 function showKey() {
-    key = document.cookie;
-    var alertString = "you've have the following key: ";
-    alertString += key;
-    alert(alertString);
+  var alertString = "you've have the following key: ";
+  alertString += key;
+  alert(alertString);
 }
